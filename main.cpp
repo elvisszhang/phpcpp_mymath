@@ -45,7 +45,7 @@ void mm_print_pn_any(Php::Parameters &params){
 	}
 	//检查数字必须大于1
 	int number = params[0];
-	if(number < 2){
+	if(number <= 1){
 		Php::out << "error: parameter must be larger than 1" << std::endl;
 		return;
 	}
@@ -91,6 +91,7 @@ Php::Value mm_sum_1_100(){
 Php::Value mm_sum_all(Php::Parameters &params){
 	int sum = 0;
 	for (auto &param : params){
+		//字符串类型可以自动转换成整形
 		sum += param;
 	}
 	return sum;
@@ -117,7 +118,7 @@ Php::Value mm_sum_array(Php::Parameters &params){
 	return sum;
 }
 
-//获取100以内的所有素数
+//获取30以内的所有素数
 Php::Value mm_get_pn_30(){
 	std::vector<int> pn;
 	int x = 2;
